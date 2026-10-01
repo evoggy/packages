@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: evoggy
+Label: evoggy
+Suite: stable
+Codename: stable
+Architectures: amd64 arm64
+Components: main
+Description: evoggy package repository
+Date: Thu, 01 Oct 2026 12:51:11 +0000
+MD5Sum:
+ 3c0012295af90ae5779317515c775020              181 Release
+ a24071f072dbd564cf56eb4dcf53357e             2440 main/binary-amd64/Packages
+ aa5ec3f9e98a8965284190d5ea687f56             1029 main/binary-amd64/Packages.gz
+ 725707242782d3ece6ceb88ff6310d68             2440 main/binary-arm64/Packages
+ 3c4bb1c0a068b9fd7a9308d65efe2445             1033 main/binary-arm64/Packages.gz
+SHA1:
+ 49787c2e6c38e4f5d2daf392a2d19281af29cfbe              181 Release
+ 9eaea9970d6d366f70106c6ea203e2028f9fc003             2440 main/binary-amd64/Packages
+ 0631c312b7726cdf04ce54ea149bfa79d760ff10             1029 main/binary-amd64/Packages.gz
+ 8d0a27b4f319e5af562e26f75ec12605e8cbce9b             2440 main/binary-arm64/Packages
+ 1ea675ed3962392247bb28b6d105f1fe14cff1d6             1033 main/binary-arm64/Packages.gz
+SHA256:
+ aa6c7491da6d6a40f058e3c3164121ddadcb0fd46b09026d70062311b5289ae1              181 Release
+ 2ff3ba4037870c5e335d41b2489a8428b81c4e12d235b67518f5a49f8b175669             2440 main/binary-amd64/Packages
+ 14fae4e80e1dd78e59769b2e7fe946119610d75197b73003cff5352a4d567bff             1029 main/binary-amd64/Packages.gz
+ a85e756f62c62b25933a5917eb14fc08ff1841e8eeb4255166256faff8ce66eb             2440 main/binary-arm64/Packages
+ 74b5ef74dae9d517971d3b1ba1464d2b707a1259bbb01cafd1db2b479ed671aa             1033 main/binary-arm64/Packages.gz
+SHA512:
+ 13515caeac7a2c52352a9ac15308a1a85c774acea23639c7e4595d8757ce65b4478816631568da10ca0abb3e78435809309eba85fc01d7c208f4a8c33eefe0b8              181 Release
+ 100571e43edfc798898018b6f948d92689ee89fa89df1d6246994a0b18aff8d0135ab8bc87b9b7f14658cc5c4eea5c8ad7c4a57f7693affe9e0e2dbb34b0bce8             2440 main/binary-amd64/Packages
+ 68336810b2de11dfc7621834063c186cf4e7f68c45c47eefcb74ece9033893db49ed3cc5fcac45b6e3e301a28fe58c10fb449d7f8489c2a7f85888fb07986e34             1029 main/binary-amd64/Packages.gz
+ df9851e1e3346ff8d451bfa722f0b3c41ba0d63cc434abfd29b9cd00724d88c3b0273f414c8a37a930b207e90209d209e15e6f21ff604b2e04a2ef333dcd3dbd             2440 main/binary-arm64/Packages
+ 813f9c8161a138d464b15cecc0462062b8e35989505126b0f00642bbfce4bed84a39e6774ec9fed6f1667ecc518be96002559a71c673f617316710bb3d6c3836             1033 main/binary-arm64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEExz5ywkLHJoYaYirslkz7Qp8vTB4FAmq+Vz8ACgkQlkz7Qp8v
+TB4hFxAA1VwJMlcAgZcDjf3KjSqWchSV6zReG+UMHaWoM0742y13LeUJZU2a8RBk
+oRlhM/b4QAMG2HJJoE4AeuYI2w5HqXCD9i/JdVUyw4haM0rpD7rDRcjtkiG1/Qna
+X5s+W8ol6VTCZTfYM9rPR9F4mVELTY1iMyNj48vPsOw+4CyKBB5QOT/Pjj5dBTpr
+nKPM+R5LxszPW45uHKeeqQ/gNBtLBqufNx5joZb/dVVt1FLnkHRszW9XrnNG4t9+
+De0jRCRUoWaEMRaELkDdcBY9LRxmB1tRYPAP7aWDAijxzS6hHYbOdJ1W2pUil/u6
+1qc9GZX0UO20Z/rbyEAXmhsfWrSNt0etWX3yYKrUuhXAkeInY7yNtPc6mx5ergZG
+yp1pmdhzQ9yk/77CUHjnYmPgGaiP+xfPYkRFfCtDet6+0vhp+yNI+3xfc5jwJsUH
+VK+SC676PnhQkEBCYIXtSFXkndMDH4DJ7XkYviV1WAubvE2mt/O1McllfzqOXgbh
+/DcbfDH4KTSwVC7HxODGAm3V8weeScjdOYm3Ei8PXyQTZnrPNZXBMfE3UbnccZeb
+qBWaYzhb05KPmqw+QS5KQ5kQ2LEolF57vKfYX0pG7+IfCYOOb5lxJ5Uxdl9XMlVW
+Ts4SoJyY4/Hs9kdhjR274sMzfBiQgqhe5MBI0sI2YIoRvSrs8qo=
+=t6np
+-----END PGP SIGNATURE-----

@@ -1,0 +1,57 @@
+Package: bscli
+Version: 0.1.2-1
+Architecture: arm64
+Maintainer: Marcus Eliasson <marcus@bitcraze.io>
+Installed-Size: 5106
+Depends: libc6 (>= 2.34), libudev1 (>= 183)
+Filename: pool/main/bscli/bscli_0.1.2-1_arm64.deb
+Size: 1693572
+MD5sum: b001949a486515c5e515c638ae47caf8
+SHA1: ddb7a35ac8a0cf97bca5a6265091b94dc6fe975a
+SHA256: 920ec2b28d710271229bedfca74ce1c4812efb44613470a0d189011a8cf1fa4d
+Section: utils
+Priority: optional
+Homepage: https://github.com/evoggy/bugslayer-cli
+Description: Bugslayer deck command-line client
+ Command-line client for the Bugslayer deck, a debug deck for the Crazyflie:
+ SWD probes, logic capture, SPI and deck control.
+
+Package: bsui
+Version: 0.1.0-1
+Architecture: arm64
+Maintainer: Marcus Eliasson <marcus@bitcraze.io>
+Installed-Size: 26671
+Depends: libc6 (>= 2.35), libegl1, libfontconfig1 (>= 2.12.6), libgl1, libudev1 (>= 183), libwayland-client0, libwayland-egl1, libx11-6, libx11-xcb1, libxcursor1, libxi6, libxkbcommon-x11-0, libxkbcommon0
+Recommends: bscli, fonts-dejavu-core
+Filename: pool/main/bsui/bsui_0.1.0-1_arm64.deb
+Size: 8079264
+MD5sum: d449b454a44d3bae5e133ce4a97e8285
+SHA1: 4866d7fd2d5902eb7154888b9ff24af079208240
+SHA256: e825a44ddea997b43a41d0e66c02c0bbabf2cc438e5cf3bdb2a397d578099e2b
+Section: utils
+Priority: optional
+Homepage: https://github.com/evoggy/bugslayer-ui
+Description: Bugslayer deck logic analyzer and control UI
+ Desktop client for the Bugslayer deck: record the Crazyflie expansion port,
+ view the signals and decode I2C, UART, SPI and 1-Wire, and control the deck.
+
+Package: swarmkeeper
+Version: 0.1.0-1
+Architecture: arm64
+Maintainer: Marcus Eliasson <marcus@bitcraze.io>
+Installed-Size: 31856
+Depends: libc6 (>= 2.35), libegl1, libfontconfig1 (>= 2.12.6), libgl1, libudev1 (>= 183), libwayland-client0, libwayland-egl1, libx11-6, libx11-xcb1, libxcursor1, libxi6, libxkbcommon-x11-0, libxkbcommon0
+Recommends: fonts-dejavu-core
+Filename: pool/main/swarmkeeper/swarmkeeper_0.1.0-1_arm64.deb
+Size: 7260944
+MD5sum: f22b011d3a6a9c78e63283ecb05c327f
+SHA1: 8b6ffa409c2014fdccae405a7a89028ac4b4fc13
+SHA256: 22c10077c7f2ce50a31f6e7e465c871e2b8a31193a37f8161d11d7418d49bf0c
+Section: utils
+Priority: optional
+Homepage: https://github.com/evoggy/swarmkeeper
+Description: Crazyflie swarm management application
+ Desktop application for setting up, configuring and debugging Crazyflie
+ swarms: unit management, radio tests, 3D visualization and Lighthouse/Loco
+ coverage planning.
+
