@@ -1,0 +1,139 @@
+name: Publish APT repository
+
+# Triggered by an application's release pipeline via repository_dispatch, e.g.:
+#
+#   - uses: peter-evans/repository-dispatch@v3
+#     with:
+#       token: ${{ secrets.PACKAGING_TOKEN }}
+#       repository: evoggy/packages
+#       event-type: publish-deb
+#       client-payload: '{"repo": "evoggy/bugslayer-cli", "tag": "0.1.0", "app": "bscli"}'
+#
+# The .deb files are pulled from the named release of the named repo, ingested
+# into the shared APT pool, and the whole repo is re-signed and redeployed to
+# the gh-pages branch (served at https://evoggy.github.io/packages/apt).
+#
+# Note: dispatch payload values are untrusted input, so they are passed through
+# env vars (never interpolated directly into run:) and validated before use.
+
+on:
+  repository_dispatch:
+    types: [publish-deb]
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Source repo to pull debs from (owner/name)'
+        required: true
+        type: string
+      tag:
+        description: 'Release tag holding the .deb assets'
+        required: true
+        type: string
+      app:
+        description: 'Application name (pool namespace)'
+        required: true
+        type: string
+
+# Serialize publishes so two app releases never race the shared gh-pages branch.
+concurrency:
+  group: publish-apt
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve and validate inputs
+        id: in
+        env:
+          EVENT: ${{ github.event_name }}
+          CP_REPO: ${{ github.event.client_payload.repo }}
+          CP_TAG: ${{ github.event.client_payload.tag }}
+          CP_APP: ${{ github.event.client_payload.app }}
+          IN_REPO: ${{ inputs.repo }}
+          IN_TAG: ${{ inputs.tag }}
+          IN_APP: ${{ inputs.app }}
+        run: |
+          if [ "$EVENT" = "repository_dispatch" ]; then
+            repo="$CP_REPO"; tag="$CP_TAG"; app="$CP_APP"
+          else
+            repo="$IN_REPO"; tag="$IN_TAG"; app="$IN_APP"
+          fi
+
+          # Only ever ingest from our own account.
+          case "$repo" in
+            evoggy/*) ;;
+            *) echo "::error::refusing to publish from unexpected repo: '$repo'"; exit 1 ;;
+          esac
+          # app becomes a path component -> no traversal / shell metacharacters.
+          case "$app" in
+            *[!a-z0-9._-]* | "" | .* ) echo "::error::invalid app name: '$app'"; exit 1 ;;
+          esac
+          # tag is a version-ish ref.
+          case "$tag" in
+            *[!A-Za-z0-9._-]* | "" ) echo "::error::invalid tag: '$tag'"; exit 1 ;;
+          esac
+
+          printf 'repo=%s\n' "$repo" >> "$GITHUB_OUTPUT"
+          printf 'tag=%s\n'  "$tag"  >> "$GITHUB_OUTPUT"
+          printf 'app=%s\n'  "$app"  >> "$GITHUB_OUTPUT"
+
+      - name: Checkout (scripts + landing page)
+        uses: actions/checkout@v4
+
+      - name: Install tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev apt-utils gnupg rsync
+
+      - name: Seed site from currently-published content
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p site
+          # Pull the existing gh-pages content so this publish is incremental.
+          # On the very first run gh-pages does not exist yet; that's fine.
+          if git clone --branch gh-pages --depth 1 \
+               "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+               site-existing 2>/dev/null; then
+            rsync -a --exclude '.git' site-existing/ site/
+            echo "Seeded from existing gh-pages."
+          else
+            echo "No existing gh-pages branch; starting a fresh repository."
+          fi
+
+      - name: Download .deb assets from release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ steps.in.outputs.repo }}
+          TAG: ${{ steps.in.outputs.tag }}
+        run: |
+          mkdir -p incoming
+          gh release download "$TAG" --repo "$REPO" --pattern '*.deb' --dir incoming
+
+      - name: Import GPG signing key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: printf '%s' "$GPG_PRIVATE_KEY" | gpg --batch --import
+
+      - name: Build APT repository
+        env:
+          APP: ${{ steps.in.outputs.app }}
+          INCOMING_DIR: incoming
+          SITE_DIR: site
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        run: bash scripts/publish-apt.sh
+
+      - name: Add landing page
+        run: cp web/index.html site/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          force_orphan: true

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>evoggy package repository</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.5; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; }
+        pre code { padding: 0; }
+        h2 { margin-top: 2em; }
+    </style>
+</head>
+<body>
+    <h1>evoggy package repository</h1>
+    <p>Debian/Ubuntu (APT) repository for amd64 and arm64.</p>
+
+    <h2>Setup</h2>
+    <pre><code># Add the repository signing key
+curl -fsSL https://evoggy.github.io/packages/apt/evoggy.gpg.key \
+  | sudo gpg --dearmor -o /usr/share/keyrings/evoggy-archive-keyring.gpg
+
+# Add the repository
+echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/evoggy-archive-keyring.gpg] https://evoggy.github.io/packages/apt stable main" \
+  | sudo tee /etc/apt/sources.list.d/evoggy.list
+
+sudo apt update</code></pre>
+
+    <h2>Install a package</h2>
+    <pre><code>sudo apt install bscli</code></pre>
+
+    <h2>Update</h2>
+    <pre><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+
+    <h2>Links</h2>
+    <ul>
+        <li><a href="https://github.com/evoggy/packages">Repository tooling (evoggy/packages)</a></li>
+        <li><a href="https://github.com/evoggy/bugslayer-cli">bscli</a></li>
+    </ul>
+</body>
+</html>
