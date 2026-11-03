@@ -1,0 +1,32 @@
+Origin: evoggy
+Label: evoggy
+Suite: stable
+Codename: stable
+Architectures: amd64 arm64
+Components: main
+Description: evoggy package repository
+Date: Tue, 03 Nov 2026 20:54:37 +0000
+MD5Sum:
+ 2fae0c50d1f5a5600457b33b73b8b883              181 Release
+ ae2c6b3f6f2f098103c42853484f1a10             2441 main/binary-amd64/Packages
+ a636a5ed13b55b493311d7d8cae95688             1034 main/binary-amd64/Packages.gz
+ 05662d666d7b488ac2772675e10dce6e             2441 main/binary-arm64/Packages
+ 03e442b70c40b90178f872bd4d47cfb8             1034 main/binary-arm64/Packages.gz
+SHA1:
+ 37981f17eed7905b0b68ff8bc804e1c98f6a7cde              181 Release
+ 6e671973719934052ec6909fa89d1bc0d75a249f             2441 main/binary-amd64/Packages
+ 13cbafe950ffc7c777781f40f2ebc2332e7bfae1             1034 main/binary-amd64/Packages.gz
+ 2c0024769af5df53cdd5ddc15f19671ff3430f8b             2441 main/binary-arm64/Packages
+ c3670291950bc492e9d7394fa9f344edcd3560fa             1034 main/binary-arm64/Packages.gz
+SHA256:
+ 7442a0f2f3f0cac8c35543fb51e7cf2ee643e31710b16f52a92ad71f4d1ad836              181 Release
+ 5e2b8435d1d4b14ffe03ff69173431a9287d4bba550a2ea313eb11aa6fb80b40             2441 main/binary-amd64/Packages
+ 3fb6cf2ffc68c8db83874c63e1b916f3856f15baec4fd91a66c327c19d88779f             1034 main/binary-amd64/Packages.gz
+ 797cc899a93ed77a364dc15615e8ff842caf7426e168471e9213c1abb2e808ca             2441 main/binary-arm64/Packages
+ 3505788f901f20f62531ee0a47ff013f0a5daeb54020dc4528e8563962b37bbf             1034 main/binary-arm64/Packages.gz
+SHA512:
+ 9648a945ab370f39cca9a0594f86ed6703d405fe0337d7eb9aeb8d58fa963119e28bddcd3384499e78e403e69a735c3f407f0d55a860900162cbb76b07ce22e8              181 Release
+ 5c1c3b17f2d369fe0f95dc4d8364f5512f00d192c57e2d163567e30d88bcbc330e034c451a328bf4af667f162c91d3746db470ac7718c893e7cb2fcf863dee03             2441 main/binary-amd64/Packages
+ c35d8d65109d14f6f8ea973c32696273a32fc4a91881577cfe145a9334d39f8906de01d31ef7c89ae4e810d28a37caa10780e03886af4962bf8abc01a2372242             1034 main/binary-amd64/Packages.gz
+ d2c5fa6bd687d8236ae842ac935332fda780993c368f7273e17946f04ca1f6a57d69859f933fddd1201510c63b8807ab7bd77ed7d847941ffe885b49649ea11f             2441 main/binary-arm64/Packages
+ 96656141454e5b8c04c5476416cd14937d59d09d1bfeae9b7fbc57e68613fd94d5c909acafcb20d056a1fe1c3cd0e5c863216d6719af4df5871296a30371d612             1034 main/binary-arm64/Packages.gz
